@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import agent from "../app/api/agent";
+
+import ArtItem from "./ArtItem";
 import Spinner from "../app/layout/Spinner";
 
-const countIncrease = 1;
+import agent from "../app/api/agent";
 
-export default function Department() {
+import { IArtDetails } from "../app/models/arts";
+
+const countIncrease = 3;
+
+export default function ArtsList() {
   const { id } = useParams<{ id: string }>();
 
   const [loading, setLoading] = useState(false);
-  const [artsIDs, setArtsIDs] = useState<any>([]);
-  const [artsDetails, setArtsDetails] = useState<any>([]);
+  const [artsIDs, setArtsIDs] = useState<number[]>([]);
+  const [artsDetails, setArtsDetails] = useState<IArtDetails[]>([]);
   const [count, setCount] = useState<number>(0);
   const [totalItems, setTotalItems] = useState<number>();
   const [disabled, setDisabled] = useState<boolean>(false);
@@ -76,18 +81,23 @@ export default function Department() {
   }
 
   return (
-    <div>
-      <h1>{totalItems}</h1>
-      <h1>dispalayed items {artsDetails.length}</h1>
-      {artsDetails &&
-        artsDetails.map((details: any) => (
-          <div key={details.objectID}>
-            <h3>{details.objectID}</h3>
-            <h3>{details.artistAlphaSort}</h3>
-          </div>
-        ))}
+    <div className="flex-center-column">
+      {artsDetails.length && <h1> {artsDetails[0].department}</h1>}
+      <h2>
+        Displayed arts:
+        <span className="counter">
+          {artsDetails.length} / {totalItems}
+        </span>
+      </h2>
+      <div className="art-grid">
+        {artsDetails &&
+          artsDetails.map((details: IArtDetails) => (
+            <ArtItem key={details.objectID} details={details} />
+          ))}
+      </div>
       {loading && <Spinner />}
-      <button disabled={disabled} onClick={() => loadDetails()}>
+
+      <button className="btn" disabled={disabled} onClick={() => loadDetails()}>
         Load more
       </button>
     </div>

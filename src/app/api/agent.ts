@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { history } from "../../App";
-import { IDepartments, IArtsIDs, IArtDetails } from "../models/apiTypes";
+import { IDepartments, IArtsIDs, IArtDetails } from "../models/arts";
 
 const sleep = (delay: number) => {
   return new Promise((resolve) => {
@@ -12,7 +12,7 @@ axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 axios.interceptors.response.use(
   async (response) => {
-    if (process.env.NODE_ENV === "development") await sleep(1000);
+    if (process.env.NODE_ENV === "development") await sleep(100);
     return response;
   },
   (error: AxiosError) => {

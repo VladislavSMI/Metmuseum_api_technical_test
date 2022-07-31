@@ -4,25 +4,29 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import { createBrowserHistory } from "history";
 
 import NotFound from "./app/layout/NotFound";
-import AllDepartments from "./features/AllDepartments";
-import Department from "./features/Department";
-import ScrollToTop from "./app/layout/ScrollToTop";
+import AllDepartments from "./features/DepartmentsList";
+import Department from "./features/ArtsList";
+import NavBar from "./app/layout/NavBar";
+import About from "./app/layout/About";
 
-import { createBrowserHistory } from "history";
 
 export const history = createBrowserHistory();
 
 function App() {
   return (
     <HistoryRouter history={history}>
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<AllDepartments />} />
-        <Route path="/department/:id" element={<Department />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <NavBar />
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<AllDepartments />} />
+          <Route path="/department/:id" element={<Department />} />
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
     </HistoryRouter>
   );
 }

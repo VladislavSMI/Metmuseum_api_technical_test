@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import agent from "../app/api/agent";
-import { IDepartment } from "../app/models/apiTypes";
+import DepartmentItem from "./DepartmentItem";
 import Spinner from "../app/layout/Spinner";
-import { Link } from "react-router-dom";
+
+import { IDepartment } from "../app/models/arts";
 import { history } from "../App";
+
+import agent from "../app/api/agent";
 
 const countIncrease = 3;
 const initialCount = 15;
@@ -51,10 +53,9 @@ export default function AllDepartments() {
     const filteredDepartments = departments.filter(
       (department) => department.departmentId !== id
     );
-    console.log(filteredDepartments);
+    
     setDepartments(filteredDepartments);
 
-    console.log(departments.length);
     if (!filteredDepartments.length) {
       history.go(0);
     }
@@ -65,21 +66,19 @@ export default function AllDepartments() {
   }
 
   return (
-    <div>
-      <h1>Select Department</h1>
-      <ul>
-        {departments.length > 0 &&
-          departments.map((department: IDepartment) => (
-            <li key={department.departmentId}>
-              {department.displayName}
-              <Link to={`/department/${department.departmentId}`}>Select</Link>
-              <button onClick={() => deleteDepartment(department.departmentId)}>
-                Delete
-              </button>
-            </li>
-          ))}
-      </ul>
-      <button disabled={disabled} onClick={() => loadNext()}>
+    <div className="flex-center-column">
+      <h1 className="text-center">Select Department</h1>
+      {departments.length > 0 &&
+        departments.map(({ departmentId, displayName }: IDepartment) => (
+          <DepartmentItem
+            key={departmentId}
+            id={departmentId}
+            name={displayName}
+            handleDelete={deleteDepartment}
+          />
+        ))}
+
+      <button className="btn" disabled={disabled} onClick={() => loadNext()}>
         Load next
       </button>
     </div>
