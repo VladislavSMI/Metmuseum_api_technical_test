@@ -1,4 +1,3 @@
-import React from "react";
 import { IArtDetails } from "../app/models/arts";
 
 interface Props {

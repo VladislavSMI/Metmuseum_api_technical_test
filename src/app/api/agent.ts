@@ -2,24 +2,31 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 import { history } from "../../App";
 import { IDepartments, IArtsIDs, IArtDetails } from "../models/arts";
 
-const sleep = (delay: number) => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-};
-
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 axios.interceptors.response.use(
-  async (response) => {
-    if (process.env.NODE_ENV === "development") await sleep(100);
-    return response;
-  },
+  (response) => response,
   (error: AxiosError) => {
     const { status, statusText } = error.response!;
+    let message;
 
-    console.log(`Status: ${status} StatusText: ${statusText}`);
-    history.push("/error");
+    if (error instanceof AxiosError) {
+      message = error.response?.data.message;
+    }
+
+    switch (status) {
+      case 404:
+        if (message === "Not a valid object") {
+          console.log(`Status: ${status} StatusText: ${statusText}`);
+          return Promise.resolve({ data: {} });
+        }
+        history.push("/error");
+        break;
+      default:
+        console.log(`Status: ${status} StatusText: ${statusText}`);
+        history.push("/error");
+    }
+
     return Promise.reject(error);
   }
 );
@@ -30,7 +37,7 @@ const requests = {
   get: <T>(url: string) => axios.get<T>(url).then(responseBody),
 };
 
-export const Data = {
+export const MetApi = {
   departments: () =>
     requests.get<IDepartments>(
       "https://collectionapi.metmuseum.org/public/collection/v1/departments"
@@ -46,7 +53,7 @@ export const Data = {
 };
 
 const agent = {
-  Data,
+  MetApi,
 };
 
 export default agent;

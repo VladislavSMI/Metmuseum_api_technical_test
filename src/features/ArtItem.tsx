@@ -37,7 +37,7 @@ export default function ArtItem({ details }: Props) {
           {primaryImageSmall ? (
             <img className="art-img" src={primaryImageSmall} alt={objectName} />
           ) : (
-            <img src="../assets/placeholder.png" alt="" />
+            <img src="../assets/placeholder.png" alt="missing" />
           )}
         </div>
         <div className="art-item-list">

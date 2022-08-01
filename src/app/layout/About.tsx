@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function About() {
   return (
     <div className="flex-center-column">
@@ -12,10 +10,10 @@ export default function About() {
           internal state via “Load next” button, which will be disabled once all
           items are displayed. There is also CTA for each item that removes it
           from the list until page reloads. Upon clicking on an item, user will
-          be rerouted to new subpage where the first 3 arts from selected
+          be rerouted to new subpage where the first 15 arts from selected
           department will be fetched and displayed with 4 basic information.
           User can display more information via “More info” button as modal.
-          “Load more” button will fetch and display additional 3 items and will
+          “Load more” button will fetch and display additional 15 items and will
           be disabled once all items are fetched and displayed.
         </p>
         <h2>Technical solution</h2>

@@ -2,7 +2,7 @@
 
 ## General overview
 
-Web-app fetches data containing all departments of Met Museum and displays first 15 items. Additional departments will be displayed from internal state via “Load next” button, which will be disabled once all items are displayed. There is also CTA for each item that removes it from the list until page reloads. Upon clicking on an item, user will be rerouted to new subpage where the first 3 arts from selected department will be fetched and displayed with 4 basic information. User can display more information via “More info” button as modal. “Load more” button will fetch and display additional 3 items and will be disabled once all items are fetched and displayed.
+Web-app fetches data containing all departments of Met Museum and displays first 15 items. Additional departments will be displayed from internal state via “Load next” button, which will be disabled once all items are displayed. There is also CTA for each item that removes it from the list until page reloads. Upon clicking on an item, user will be rerouted to new subpage where the first 15 arts from selected department will be fetched and displayed with 4 basic information. User can display more information via “More info” button as modal. “Load more” button will fetch and display additional 15 items and will be disabled once all items are fetched and displayed.
 
 ## Technical solution
 

@@ -22,7 +22,7 @@ export default function AllDepartments() {
       setLoading(true);
 
       try {
-        const { departments } = await agent.Data.departments();
+        const { departments } = await agent.MetApi.departments();
         setAllDepartments(departments);
         setDepartments(departments.slice(0, count));
         setLoading(false);
