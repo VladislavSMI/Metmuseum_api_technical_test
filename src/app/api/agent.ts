@@ -30,8 +30,6 @@ const requests = {
   get: <T>(url: string) => axios.get<T>(url).then(responseBody),
 };
 
-//The Metropolitan Museum API => https://metmuseum.github.io/
-
 export const Data = {
   departments: () =>
     requests.get<IDepartments>(

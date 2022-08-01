@@ -1,8 +1,20 @@
-# Getting Started with Create React App
+# Technical Test / Junior Developer / Small web-app in React + TypeScript
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## General overview
 
-## Available Scripts
+Web-app fetches data containing all departments of Met Museum and displays first 15 items. Additional departments will be displayed from internal state via “Load next” button, which will be disabled once all items are displayed. There is also CTA for each item that removes it from the list until page reloads. Upon clicking on an item, user will be rerouted to new subpage where the first 3 arts from selected department will be fetched and displayed with 4 basic information. User can display more information via “More info” button as modal. “Load more” button will fetch and display additional 3 items and will be disabled once all items are fetched and displayed.
+
+## Technical solution
+
+- Api used: The Metropolitan Museum API [https://metmuseum.github.io/](https://metmuseum.github.io/). Free public api without api key. If api key is required, then I will create back-end server to fetch the API results and then pass to front-end. Axios library is used to fetch data from api. All api calls are setup in agent.ts file.
+- In order to keep the web-app simple and show understanding of how data and events are passed between react components no state management system was implemented. Otherwise I have mostly experience with MobX followed by Context API and Redux.
+- No design library was used in order to show CSS knowledge. Otherwise I have experienced with MUI, Semantic UI and Atlassian Design System. Css modules were not implemented, as the project is small web-app with no global namespace collision.
+
+## Local development setup
+
+### `npm install`
+
+Installs node modules
 
 In the project directory, you can run:
 
@@ -13,34 +25,3 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

@@ -34,7 +34,7 @@ export default function AllDepartments() {
 
     loadAllDepartments();
 
-    //Eslint disable for next line => useEffect to run only once on initial mount
+    //Eslint disable for next line => we want to run useEffect to run only once on initial mount
     // eslint-disable-next-line
   }, []);
 
@@ -53,7 +53,7 @@ export default function AllDepartments() {
     const filteredDepartments = departments.filter(
       (department) => department.departmentId !== id
     );
-    
+
     setDepartments(filteredDepartments);
 
     if (!filteredDepartments.length) {

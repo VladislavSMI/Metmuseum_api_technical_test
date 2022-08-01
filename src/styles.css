@@ -26,7 +26,7 @@ html {
 
 body {
   font-family: "Poppins", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   line-height: 1.6;
   background-color: var(--dark-color);
   color: var(--white-color);
@@ -315,6 +315,15 @@ input:-webkit-autofill {
 
 body .modal-container {
   overflow: hidden;
+}
+
+/* About */
+.about {
+  max-width: 1000px;
+}
+
+.about ul li {
+  margin: 2rem;
 }
 
 /* Mobile Styles */
